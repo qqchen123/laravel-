@@ -10,12 +10,18 @@ use Naux\Mail\SendCloudTemplate;
 
 class UsersController extends Controller
 {
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function register()
     {
-        //		return 123;
         return view('users.register');
     }
 
+	/**
+	 * @param UserRegisterRequest $request
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 */
     public function store(UserRegisterRequest $request)
     {
         $data = [
@@ -30,7 +36,13 @@ class UsersController extends Controller
         $this->sendTo($user, $subject, $view, $data);
         return redirect('/');
     }
-    //
+
+	/**
+	 * @param $user
+	 * @param $subject
+	 * @param $view
+	 * @param $data
+	 */
     public function sendTo($user, $subject, $view, $data)
     {
         Mail::send($view, $data, function ($message) use ($user,$subject) {
@@ -38,6 +50,10 @@ class UsersController extends Controller
         });
     }
 
+	/**
+	 * @param $confirm_code
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 */
     public function confirmEmail($confirm_code)
     {
         $user = User::where('confirm_code', $confirm_code)->first();
@@ -50,11 +66,18 @@ class UsersController extends Controller
         return redirect('user/login');
     }
 
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function login()
 	{
 		return view('users.login');
     }
 
+	/**
+	 * @param UserLoginRequest $request
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 */
 	public function signin(UserLoginRequest $request)
 	{
 		if (\Auth::attempt([
