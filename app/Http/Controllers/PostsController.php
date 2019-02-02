@@ -19,4 +19,9 @@ class PostsController extends Controller
 		$discussion = Discussion::findOrFail($id);
 		return view('forum.show',compact('discussion'));
 	}
+
+	public function create()
+	{
+		return view('forum.create');
+	}
 }
