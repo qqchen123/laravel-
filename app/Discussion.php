@@ -13,7 +13,7 @@ class Discussion extends Model
 
 	public function user()
 	{
-		$this->belongsTo(User::class,user_id,id);//$discussion->user
+		return $this->belongsTo(User::class);//$discussion->user
 	}
 
 

@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/discussion','PostsController@index');
+Route::get('/','PostsController@index');
+Route::get('/user/register','UsersController@register');
+Route::post('/user/register','UsersController@store');
+Route::resource('discussions','PostsController');
+
+
+
+
+
