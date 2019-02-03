@@ -16,6 +16,7 @@ Route::get('/user/register','UsersController@register');
 Route::post('/user/register','UsersController@store');
 Route::post('/user/login','UsersController@signin');
 Route::get('/user/login','UsersController@login');
+Route::get('/user/logout','UsersController@logout');
 Route::get('/verify/{confirm_code}','UsersController@confirmEmail');
 Route::resource('discussions','PostsController');
 

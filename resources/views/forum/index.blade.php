@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <div class="jumbotron">
-        <h2>欢迎来到Laravel App社区！<a class="btn btn-primary btn-lg pull-right" href="#" role="button">发布新的帖子</a></h2>
+        <h2>欢迎来到Laravel App社区！<a class="btn btn-primary btn-lg pull-right" href="/discussions/create" role="button">发布新的帖子</a></h2>
     </div>
     <div class="container">
         <div class="row">
