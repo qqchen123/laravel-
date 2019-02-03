@@ -21,7 +21,7 @@ class PostsController extends Controller
 	 */
 	public function index()
 	{
-		$discussions = Discussion::all();
+		$discussions = Discussion::latest()->get();
 		return view('forum.index',compact('discussions'));
 	}
 
@@ -53,4 +53,21 @@ class PostsController extends Controller
 		$discussion = Discussion::create( array_merge($request->all(),$data) );
 		return redirect()->action('PostsController@show',['id'=>$discussion->id]);
 	}
+
+	public function edit($id)
+	{
+		$discussion = Discussion::findOrFail($id);
+		if (\Auth::user()->id !== $discussion->user_id){
+			return redirect('/');
+		}
+		return view('forum.edit',compact('discussion'));
+	}
+
+	public function update(StoreBlogPostRequest $request,$id)
+	{
+		$discussion = Discussion::findOrFail($id);
+		$discussion->update($request->all());
+		return redirect()->action('PostsController@show',['id'=>$discussion->id]);
+	}
+	
 }

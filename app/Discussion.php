@@ -16,6 +16,9 @@ class Discussion extends Model
 		return $this->belongsTo(User::class);//$discussion->user
 	}
 
-
+	public function comments()
+	{
+		return $this->hasMany(Comment::class);
+	}
 
 }

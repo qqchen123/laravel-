@@ -41,6 +41,7 @@
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
                     <li><a href="/">{{Auth::user()->name}} </a></li>
+                    <li><img src="{{Auth::user()->avatar}}" width="50" class="img-circle"></li>
                     <li><a href="/logout">退出</a></li>
                 @else
                     <li><a href="/user/register">注册</a></li>

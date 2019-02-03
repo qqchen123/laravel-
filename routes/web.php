@@ -12,6 +12,8 @@
 */
 
 Route::get('/','PostsController@index');
+Route::resource('comment','CommentsController');
+
 Route::get('/user/register','UsersController@register');
 Route::post('/user/register','UsersController@store');
 Route::post('/user/login','UsersController@signin');
