@@ -6,6 +6,7 @@ use App\Discussion;
 use App\Http\Requests\StoreBlogPostRequest;
 use App\Markdown\Markdown;
 use Illuminate\Http\Request;
+use YuanChao\Editor\EndaEditor;
 
 class PostsController extends Controller
 {
@@ -69,5 +70,11 @@ class PostsController extends Controller
 		$discussion->update($request->all());
 		return redirect()->action('PostsController@show',['id'=>$discussion->id]);
 	}
-	
+
+	public function upload()
+	{
+		$data = EndaEditor::uploadImgFile('uploads');
+
+		return json_encode($data);
+	}
 }

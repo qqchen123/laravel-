@@ -10,11 +10,13 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/jquery.Jcrop.css">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
     <script src="/js/jquery.form.js"></script>
+    <script src="/js/jquery.Jcrop.js"></script>
     <![endif]-->
 </head>
 <style>
@@ -63,7 +65,5 @@
     </div><!-- /.container-fluid -->
 </nav>
 @yield('content')
-<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
 </body>
 </html>
