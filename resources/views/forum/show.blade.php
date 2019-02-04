@@ -44,12 +44,17 @@
                     </div>
                 @endforeach
                 <hr>
-                {!! Form::open(array('url' => '/comment')) !!}
-                <div class="form-group">
-                    {{ Form::textarea('body', NULL, ['class'=>'form-control']) }}
-                </div>
-                {{ Form::submit('发表评论',['class'=>'form-control btn btn-success']) }}
-                {!! Form::close() !!}
+                @if(Auth::check())
+                    {!! Form::open(array('url' => '/comment')) !!}
+                    {{ Form::hidden('discussion_id', $discussion->id) }}
+                    <div class="form-group">
+                        {{ Form::textarea('body', NULL, ['class'=>'form-control']) }}
+                    </div>
+                    {{ Form::submit('发表评论',['class'=>'form-control btn btn-success']) }}
+                    {!! Form::close() !!}
+                    @else
+                    <a href="/user/login" class="btn btn-block btn-success">登陆参与评论</a>
+                @endif
             </div>
         </div>
     </div>

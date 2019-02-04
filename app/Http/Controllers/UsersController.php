@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Intervention\Image\Facades\Image;
 use Naux\Mail\SendCloudTemplate;
 
 class UsersController extends Controller
@@ -96,6 +98,22 @@ class UsersController extends Controller
 		\Auth::logout();
 		return redirect('/');
     }
-    
-    
+
+	public function avatar()
+	{
+		return view('users/avatar');
+    }
+
+	public function changeAvatar(Request $request)
+	{
+		$file = $request->file('avatar');
+		$destinationPath = 'uploads/';
+		$filename = \Auth::user()->id.'_'.time().$file->getClientOriginalName();
+		$file->move($destinationPath,$filename);
+		Image::make($destinationPath.$filename)->fit(200)->save();
+		$user = User::find(\Auth::user()->id);
+		$user->avatar = '/'.$destinationPath.$filename;
+		$user->save();
+		return redirect('/user/avatar');
+    }
 }

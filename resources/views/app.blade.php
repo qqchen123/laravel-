@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
+    <script src="/js/jquery.form.js"></script>
     <![endif]-->
 </head>
 <style>
@@ -40,20 +43,27 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
-                    <li><a href="/">{{Auth::user()->name}} </a></li>
                     <li><img src="{{Auth::user()->avatar}}" width="50" class="img-circle"></li>
-                    <li><a href="/logout">退出</a></li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/avatar">更换头像</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/logout">退出</a></li>
+                    </ul>
+                </li>
                 @else
-                    <li><a href="/user/register">注册</a></li>
-                    <li><a href="/user/login">登陆</a></li>
+                <li><a href="/user/register">注册</a></li>
+                <li><a href="/user/login">登陆</a></li>
                 @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 @yield('content')
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
 </body>
 </html>
