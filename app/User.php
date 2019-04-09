@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -28,21 +27,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-	public function discussions()
-	{
-		return $this->hasMany(Discussion::class);//$user->discussions
+    public function discussions()
+    {
+        return $this->hasMany(Discussion::class);//$user->discussions
     }
 
-	public function comments()
-	{
-		return $this->hasMany(Comment::class);
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
     
-	public function setPasswordAttribute($password)
-	{
-		$this->attributes['password'] = \Hash::make($password);
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = \Hash::make($password);
     }
-    
-    
-    
 }
