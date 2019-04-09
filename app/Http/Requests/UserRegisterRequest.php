@@ -25,7 +25,7 @@ class UserRegisterRequest extends FormRequest
     {
         return [
             'name'                  => 'required|min:3',
-            'email'                 => 'required|email|unique:users,email',
+            'email'                 => 'required|email|unique:users,email',//user表的email字段
             'password'              => 'required|min:6|confirmed',
             'password_confirmation' => 'required|min:6',
         ];
