@@ -24,8 +24,8 @@ class PostCommentRequest extends FormRequest
     public function rules()
     {
         return [
-			'body'=>'required',
-			'discussion_id'=>'required',
+            'body'          => 'required',
+            'discussion_id' => 'required',
         ];
     }
 }
